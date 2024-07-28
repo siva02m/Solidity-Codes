@@ -1,0 +1,31 @@
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+contract SaveMyNum{
+    
+    uint256 myNum;
+    
+    function saveNum(uint256 _myNum) public{
+        myNum = _myNum;
+    }
+
+    function viewNum() public view returns(uint256){
+        return myNum;
+    }
+
+    struct Family{
+        string memName;
+        uint256 memAge;
+        string memSex;
+        uint256 memNum;
+    }
+
+    Family[] public listOfMembers;
+
+    function addMembers( string memory _memName, uint256 _memAge, string memory _memSex, uint256 _memNum) public {
+        listOfMembers.push(Family(_memName, _memAge, _memSex, _memNum));
+
+    }
+ 
+
+}

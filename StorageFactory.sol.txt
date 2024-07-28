@@ -1,0 +1,23 @@
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+import {FavnumberOfPersons} from "./SimpleStorage.sol";
+
+contract StorageFactory {
+
+    FavnumberOfPersons[] public listOfFavNumberOfPersons;
+
+    function createFavnumberOfPersonsContract() public {
+        FavnumberOfPersons newFavNumberOfPersonsContract = new FavnumberOfPersons();
+        listOfFavNumberOfPersons.push (newFavNumberOfPersonsContract);
+    }
+
+    function sfSave (uint256 _favNumberIndex, uint256 _storeNumber) public {
+        listOfFavNumberOfPersons[_favNumberIndex].save(_storeNumber);
+    }
+
+    function sfshow (uint256 _favNumberIndex) public view returns(uint256) {
+       return listOfFavNumberOfPersons[_favNumberIndex].show();
+    }
+
+}
